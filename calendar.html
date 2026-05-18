@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Calendrier - StudyGroup</title>
+    <link href="https://cdn.jsdelivr.net/npm/fullcalendar@5.11.3/main.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/fullcalendar@5.11.3/main.min.js"></script>
+</head>
+<body>
+    <div id="calendar" class="p-4"></div>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const calendarEl = document.getElementById('calendar');
+            const calendar = new FullCalendar.Calendar(calendarEl, {
+                initialView: 'dayGridMonth',
+                locale: 'fr',
+                events: [
+                    { title: 'Cours: Algèbre', start: new Date().toISOString().split('T')[0] },
+                    { title: 'Groupe étude Python', start: new Date(new Date().setDate(new Date().getDate() + 2)).toISOString().split('T')[0] }
+                ]
+            });
+            calendar.render();
+        });
+    </script>
+</body>
+</html>

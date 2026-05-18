@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tableau de bord professeur - StudyGroup</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        body {
+            background: #f8fafc;
+            font-family: 'Inter', system-ui, sans-serif;
+        }
+        .sidebar {
+            background: white;
+            min-height: 100vh;
+            box-shadow: 0 0 20px rgba(0,0,0,0.05);
+        }
+        .sidebar .nav-link {
+            padding: 12px 20px;
+            color: #475569;
+            border-radius: 12px;
+            margin: 4px 0;
+            transition: all 0.2s;
+        }
+        .sidebar .nav-link:hover, .sidebar .nav-link.active {
+            background: #6366f1;
+            color: white;
+        }
+        .sidebar .nav-link i {
+            width: 24px;
+            margin-right: 10px;
+        }
+        .stat-dashboard-card {
+            background: white;
+            border-radius: 20px;
+            padding: 20px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.03);
+            border: 1px solid #e2e8f0;
+            transition: all 0.3s;
+        }
+        .stat-dashboard-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px -5px rgba(0,0,0,0.1);
+        }
+        .progress-bar-custom {
+            height: 8px;
+            background: #e2e8f0;
+            border-radius: 10px;
+            overflow: hidden;
+        }
+        .progress-fill {
+            background: #6366f1;
+            width: 65%;
+            height: 100%;
+            border-radius: 10px;
+        }
+        .course-item {
+            background: white;
+            border-radius: 16px;
+            padding: 16px;
+            margin-bottom: 12px;
+            border: 1px solid #e2e8f0;
+            transition: all 0.2s;
+        }
+        .course-item:hover {
+            border-color: #6366f1;
+        }
+        @media (max-width: 768px) {
+            .sidebar {
+                min-height: auto;
+                margin-bottom: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container-fluid">
+        <div class="row">
+            <!-- Sidebar -->
+            <div class="col-md-3 col-lg-2 p-0">
+                <div class="sidebar p-3">
+                    <div class="text-center mb-4 mt-2">
+                        <h4 class="font-weight-bold" style="color: #6366f1;">StudyGroup</h4>
+                        <p class="small text-secondary" id="userNameSidebar"></p>
+                    </div>
+                    <nav class="nav flex-column">
+                        <a class="nav-link active" href="dashboard.html"><i class="fas fa-home"></i> Tableau de bord</a>
+                        <a class="nav-link" href="courses.html"><i class="fas fa-book"></i> Mes cours</a>
+                        <a class="nav-link" href="#"><i class="fas fa-upload"></i> Ajouter leçon</a>
+                        <a class="nav-link" href="#"><i class="fas fa-chart-bar"></i> Statistiques</a>
+                        <a class="nav-link" href="#"><i class="fas fa-comments"></i> Commentaires</a>
+                        <a class="nav-link" href="#"><i class="fas fa-file-pdf"></i> Rapports PDF</a>
+                        <hr>
+                        <a class="nav-link" href="#" onclick="logout()"><i class="fas fa-sign-out-alt"></i> Déconnexion</a>
+                    </nav>
+                </div>
+            </div>
+            
+            <!-- Main Content -->
+            <div class="col-md-9 col-lg-10 p-4">
+                <div class="d-flex justify-content-between align-items-center mb-4 flex-wrap">
+                    <div>
+                        <h2 class="font-weight-bold">Bonjour, <span id="welcomeName"></span> ! 👋</h2>
+                        <p class="text-secondary mb-0">Continue ton apprentissage, tu es sur la bonne voie</p>
+                    </div>
+                    <div class="d-flex">
+                        <div class="bg-white rounded p-2 px-3 border" style="display:flex;align-items:center;">
+                            <i class="fas fa-calendar-alt text-primary mr-2"></i>
+                            <span id="currentDate"></span>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Stats -->
+                <div class="row mb-5">
+                    <div class="col-sm-6 col-lg-3">
+                        <div class="stat-dashboard-card">
+                            <div class="d-flex justify-content-between align-items-center">
+                                <div>
+                                    <p class="text-secondary mb-1">Heures étudiées</p>
+                                    <h2 class="font-weight-bold mb-0">24</h2>
+                                </div>
+                                <i class="fas fa-clock fa-2x text-primary opacity-50"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-6 col-lg-3">
+                        <div class="stat-dashboard-card">
+                            <div class="d-flex justify-content-between align-items-center">
+                                <div>
+                                    <p class="text-secondary mb-1">Quiz complétés</p>
+                                    <h2 class="font-weight-bold mb-0">12</h2>
+                                </div>
+                                <i class="fas fa-check-circle fa-2x text-success opacity-50"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-6 col-lg-3">
+                        <div class="stat-dashboard-card">
+                            <div class="d-flex justify-content-between align-items-center">
+                                <div>
+                                    <p class="text-secondary mb-1">Badges gagnés</p>
+                                    <h2 class="font-weight-bold mb-0">8</h2>
+                                </div>
+                                <i class="fas fa-trophy fa-2x text-warning opacity-50"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-6 col-lg-3">
+                        <div class="stat-dashboard-card">
+                            <div class="d-flex justify-content-between align-items-center">
+                                <div>
+                                    <p class="text-secondary mb-1">Jours consécutifs</p>
+                                    <h2 class="font-weight-bold mb-0">5</h2>
+                                </div>
+                                <i class="fas fa-fire fa-2x text-danger opacity-50"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Espace professeur -->
+                <div id="teacherSection" class="mb-5" style="display:none;">
+                    <div class="d-flex justify-content-between align-items-center mb-3 flex-wrap">
+                        <h4>👨‍🏫 Espace professeur / Admin</h4>
+                        <a href="#lessonForm" class="btn btn-sm btn-outline-primary rounded">Créer une leçon</a>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6 mb-3">
+                            <div class="stat-dashboard-card">
+                                <h5 class="mb-3">Dashboard professeur</h5>
+                                <p class="text-secondary">Interface pour créer, modifier et gérer vos cours en un seul endroit.</p>
+                                <ul class="pl-3 mb-0">
+                                    <li>Ajouter ou modifier des cours</li>
+                                    <li>Gérer les leçons et documents</li>
+                                    <li>Contrôler l'accès et les sessions</li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <div class="stat-dashboard-card">
+                                <h5 class="mb-3">Statistiques cours</h5>
+                                <p class="text-secondary">Voir le nombre d'étudiants inscrits et la progression moyenne.</p>
+                                <p class="mb-0"><strong>Indicateurs:</strong> taux de complétion, notes, participation.</p>
+                            </div>
+                        </div>
+                        <div class="col-md-12 mb-4" id="lessonForm">
+                            <div class="stat-dashboard-card">
+                                <h5 class="mb-3">Créer une nouvelle leçon</h5>
+                                <form id="createLessonForm">
+                                    <div class="form-group mb-3">
+                                        <label for="lessonTitle">Titre de la leçon</label>
+                                        <input type="text" id="lessonTitle" class="form-control" placeholder="Ex: Algèbre - équations" required>
+                                    </div>
+                                    <div class="form-group mb-3">
+                                        <label for="lessonDescription">Description</label>
+                                        <textarea id="lessonDescription" class="form-control" rows="3" placeholder="Décris ta leçon"></textarea>
+                                    </div>
+                                    <div class="form-row">
+                                        <div class="form-group col-md-6 mb-3">
+                                            <label for="lessonVideo">URL vidéo</label>
+                                            <input type="text" id="lessonVideo" class="form-control" placeholder="Lien vidéo ou fichier local">
+                                        </div>
+                                        <div class="form-group col-md-6 mb-3">
+                                            <label for="lessonPdf">URL PDF</label>
+                                            <input type="text" id="lessonPdf" class="form-control" placeholder="Lien vers PDF">
+                                        </div>
+                                    </div>
+                                    <button type="submit" class="btn btn-primary">Publier la leçon</button>
+                                    <div id="lessonMessage" class="alert alert-success mt-3 d-none"></div>
+                                </form>
+                            </div>
+                        </div>
+                        <div class="col-md-12" id="lessonListContainer">
+                            <div class="stat-dashboard-card">
+                                <h5 class="mb-3">Leçons publiées</h5>
+                                <div id="lessonList"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div id="studentSection" class="mb-5" style="display:none;">
+                    <div class="alert alert-info">
+                        Vous êtes inscrit en tant qu'élève. Retourne sur la page <a href="courses.html" class="alert-link">Cours</a> pour accéder aux leçons et suivre ta progression.
+                    </div>
+                    <div class="stat-dashboard-card mt-4">
+                        <h5 class="mb-3">Mes cours inscrits</h5>
+                        <div id="enrolledCoursesContainer">
+                            <p class="text-secondary mb-0">Chargement de vos cours inscrits...</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Upcoming Sessions -->
+                <div>
+                    <h4 class="mb-3">📅 Prochaines sessions</h4>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="bg-white rounded p-3 border d-flex justify-content-between align-items-center flex-wrap" style="gap:0.5rem;">
+                                <div>
+                                    <span class="badge badge-primary mb-2">Aujourd'hui • 16h00</span>
+                                    <h6 class="mb-0">Cours live: Algèbre linéaire</h6>
+                                </div>
+                                <button class="btn btn-sm btn-primary rounded-pill px-3">Rejoindre</button>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="bg-white rounded p-3 border d-flex justify-content-between align-items-center flex-wrap" style="gap:0.5rem;">
+                                <div>
+                                    <span class="badge badge-success mb-2">Demain • 14h30</span>
+                                    <h6 class="mb-0">Groupe d'étude: Révision Bac</h6>
+                                </div>
+                                <button class="btn btn-sm btn-outline-primary rounded-pill px-3">Rejoindre</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="js/app.js"></script>
+    <script>
+        // Afficher la date
+        const today = new Date();
+        document.getElementById('currentDate').innerText = today.toLocaleDateString('fr-FR');
+    </script>
+    <script>
+    // Sauvegarder progression dans localStorage
+function saveProgress(courseId, percentage) {
+    const user = getCurrentUser();
+    if (!user) return;
+    const progressKey = `progress_${user.id}_${courseId}`;
+    localStorage.setItem(progressKey, percentage);
+}
+
+// Récupérer progression
+function getProgress(courseId) {
+    const user = getCurrentUser();
+    if (!user) return 0;
+    const progressKey = `progress_${user.id}_${courseId}`;
+    return parseInt(localStorage.getItem(progressKey)) || 0;
+}
+</script>
+</body>
+</html>

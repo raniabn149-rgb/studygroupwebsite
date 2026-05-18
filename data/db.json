@@ -1,0 +1,133 @@
+{
+  "users": [
+    {
+      "id": "1",
+      "firstname": "Ahmed",
+      "lastname": "Ben Ali",
+      "email": "test@studygroup.com",
+      "password": "123456",
+      "level": "Lycée",
+      "role": "eleve",
+      "createdAt": "2026-05-18T00:00:00.000Z"
+    },
+    {
+      "id": "1779134533661",
+      "firstname": "rania",
+      "lastname": "ben hassen",
+      "email": "raniabn149@gmail.com",
+      "level": "Université",
+      "role": "eleve",
+      "password": "000000",
+      "createdAt": "2026-05-18T20:02:13.661Z"
+    },
+    {
+      "id": "1779134630277",
+      "firstname": "ahmed",
+      "lastname": "ben ali",
+      "email": "ahmed12@gmail.com",
+      "level": "Professionnel",
+      "role": "professeur",
+      "password": "123456",
+      "createdAt": "2026-05-18T20:03:50.277Z"
+    }
+  ],
+  "courses": [
+    {
+      "id": "1",
+      "title": "Mathématiques - Algèbre",
+      "category": "math",
+      "level": "Lycée",
+      "duration": "12h",
+      "students": 1245,
+      "image": "📐",
+      "teacher": "M. Karim",
+      "description": "Maîtrisez l'algèbre linéaire et les équations complexes"
+    },
+    {
+      "id": "2",
+      "title": "Mathématiques - Géométrie",
+      "category": "math",
+      "level": "Lycée",
+      "duration": "10h",
+      "students": 980,
+      "image": "📏",
+      "teacher": "Mme Leila",
+      "description": "Géométrie dans l'espace et vecteurs"
+    },
+    {
+      "id": "3",
+      "title": "Physique - Mécanique",
+      "category": "physics",
+      "level": "Lycée",
+      "duration": "15h",
+      "students": 2100,
+      "image": "⚙️",
+      "teacher": "M. Houssem",
+      "description": "Les lois de Newton et mouvement"
+    },
+    {
+      "id": "4",
+      "title": "Physique - Électricité",
+      "category": "physics",
+      "level": "Lycée",
+      "duration": "8h",
+      "students": 1560,
+      "image": "⚡",
+      "teacher": "Mme Sonia",
+      "description": "Circuits électriques et lois d'Ohm"
+    },
+    {
+      "id": "5",
+      "title": "Python - Débutant",
+      "category": "cs",
+      "level": "Université",
+      "duration": "20h",
+      "students": 3450,
+      "image": "🐍",
+      "teacher": "M. Ahmed",
+      "description": "Apprenez la programmation avec Python"
+    },
+    {
+      "id": "6",
+      "title": "Développement Web",
+      "category": "cs",
+      "level": "Université",
+      "duration": "25h",
+      "students": 2890,
+      "image": "🌐",
+      "teacher": "M. Skander",
+      "description": "HTML, CSS, JavaScript et frameworks"
+    },
+    {
+      "id": "7",
+      "title": "Anglais - TOEFL",
+      "category": "langues",
+      "level": "Tous",
+      "duration": "30h",
+      "students": 4100,
+      "image": "🇬🇧",
+      "teacher": "Mme Sarah",
+      "description": "Préparez-vous au TOEFL efficacement"
+    },
+    {
+      "id": "8",
+      "title": "Français - Méthodologie",
+      "category": "langues",
+      "level": "Lycée",
+      "duration": "12h",
+      "students": 890,
+      "image": "🇫🇷",
+      "teacher": "M. Pierre",
+      "description": "Techniques de dissertation et commentaire"
+    }
+  ],
+  "lessons": [],
+  "enrollments": [
+    {
+      "id": "1779134554717",
+      "userId": "1779134533661",
+      "courseId": "6",
+      "enrolledAt": "2026-05-18T20:02:34.717Z"
+    }
+  ]
+}

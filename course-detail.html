@@ -1,0 +1,32 @@
+<div class="quiz-section mt-5">
+    <h3>📝 Quiz - Vérifiez vos connaissances</h3>
+    <div id="quizContainer">
+        <div class="quiz-question mb-4">
+            <p><strong>1. Qu'est-ce qu'une variable en programmation ?</strong></p>
+            <div class="form-check">
+                <input class="form-check-input" type="radio" name="q1" value="a">
+                <label>Un espace mémoire pour stocker une valeur</label>
+            </div>
+            <div class="form-check">
+                <input class="form-check-input" type="radio" name="q1" value="b">
+                <label>Une fonction mathématique</label>
+            </div>
+            <div class="form-check">
+                <input class="form-check-input" type="radio" name="q1" value="c">
+                <label>Un type de boucle</label>
+            </div>
+        </div>
+    </div>
+    <button class="btn btn-primary" onclick="checkQuiz()">Valider le quiz</button>
+    <div id="quizResult" class="mt-3"></div>
+</div>
+
+<script>
+function checkQuiz() {
+    let score = 0;
+    if (document.querySelector('input[name="q1"]:checked')?.value === 'a') score++;
+    document.getElementById('quizResult').innerHTML = `
+        <div class="alert alert-success">✅ Score: ${score}/1</div>
+    `;
+}
+</script>
